@@ -7,7 +7,7 @@ NAME = fractol
 SRC = src/colours.c src/fractol_init.c src/fractol_utils1.c src/fractol_utils2.c \
       src/fractol_utils3.c src/fractol.c src/fractol_render.c\
 
-LIB = libft/src
+LIB = lib/src
 
 MLX = mlx_linux
 
