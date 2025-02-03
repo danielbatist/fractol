@@ -33,42 +33,49 @@ void	guidelines(void)
 
 double	ft_atod(char *str)
 {
+	int		sign;
+	int		dot; 
 	long	whole;
 	double	dec;
 	double	power;
-	int		sign;
 
-	while (*str == 32 || (*str >= 8 && *str <= 13))
-		str++;
 	sign = 1;
-	while (*str == '+' || *str == '-')
+	dot = 0;
+	whole = 0;
+	dec = 0.0;
+	power = 1.0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		if (*str++ == '-')
+		str++;
+		if (*str == '-')
 			sign = -1;
 	}
-	whole = 0;
-	while (*str != '.' && *str)
+	while (*str >= '0' && *str <= '9')
 		whole = (whole * 10) + (*str++ - '0');
 	if (*str == '.')
-		str++;
-	power = 0;
-	while (*str)
 	{
-		power /= 10;
-		dec = dec + (*str++ - '0') * power;
+		str++;
+		dot = 1;
+		while (*str >= '0' && *str <= '9')
+		{
+			dec = (dec * 10) + (*str++ - '0');
+			power *= 10;
+			str++;
+		}
 	}
-	return ((whole + dec) * sign);
+	if (dot)
+		return (sign * (whole + (dec / power)));
+	else
+		return (sign * whole);
 }
 
 double	map(t_map coord)
 {
-	double	res;
-
-	res = (coord.u_num - coord.old_min) / (coord.old_max - coord.old_min);
-	res *= (coord.new_max - coord.new_min);
-	res += coord.new_min;
-	return (res);
+	return (coord.new_min + ((coord.u_num - coord.old_min) / (coord.old_max - coord.old_min)) * (coord.new_max - coord.new_min));
 }
+
 
 void	zoom_in(t_fractol *frac, double mouse_r, double mouse_i)
 {

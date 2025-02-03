@@ -12,14 +12,6 @@
 
 #include "fractol.h"
 
-void	my_mlx_pixel_put(int x, int y, t_fractol *frac, int colour)
-{
-	int	displace;
-
-	displace = (y * frac->line + x * (frac->bpp / 8));
-	*(unsigned int *)(frac->addr + displace) = colour;
-
-}
 
 t_fractol	square_complex(t_fractol z)
 {
@@ -30,12 +22,12 @@ t_fractol	square_complex(t_fractol z)
 	return (res);
 }
 
-t_fractol	add_z_with_c(t_fractol z, t_fractol c)
+t_fractol	add_z_with_c(t_fractol z1, t_fractol z2)
 {
 	t_fractol	res;
 
-	res.cpx_r = z.cpx_r + c.cpx_r;
-	res.cpx_i = z.cpx_i + c.cpx_i;
+	res.cpx_r = z1.cpx_r + z2.cpx_r;
+	res.cpx_i = z1.cpx_i + z2.cpx_i;
 	return (res);
 }
 

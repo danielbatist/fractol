@@ -16,8 +16,8 @@ static int	julia_mouse_move(int but, int x, int y, t_fractol *f)
 {
 	if (but == Button1 || but == Button3)
 	{
-		f->julia_r = (map((t_map){x, -2, +2, 0, WID}) * f->zoom) + f->shift_r;
-		f->julia_i = (map((t_map){y, +2, -2, 0, HEI}) * f->zoom) + f->shift_i;
+		f->julia_r = (map((t_map){x, 0, WID, -2, 2}) * f->zoom) + f->shift_r;
+		f->julia_i = (map((t_map){y, 0, HEI, 2, -2}) * f->zoom) + f->shift_i;
 		fractol_render(f);
 	}
 	return (0);

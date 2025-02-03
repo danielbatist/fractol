@@ -15,15 +15,16 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)/libft.a $(MLX)/libmlx_Linux.a
+$(NAME): $(OBJ) $(LIB)/libft.a $(MLX)libmlx.a $(MLX)/libmlx_Linux.a 
 	@$(CC) $(OBJ) -L$(LIB) -lft -L$(MLX) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 
 $(LIB)/libft.a:
 	@echo "Compiling Libft..."
 	@make -C $(LIB)
 
-$(MLX)/libmlx_Linux.a:
+$(MLX)/libmlx_Linux.a $(MLX)libmlx.a:
 	@echo "Compiling MLX..."
+	@cd $(MLX) && ./configure
 	@make -C $(MLX)
 
 .c.o: 

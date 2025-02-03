@@ -24,7 +24,7 @@ int	blend_colours(int c1, int c2, double i)
 	r = (int)(r + (255 - r) * i * 1.5);
 	g = (int)(g + (255 - g) * i * 0.2);
 	b = (int)(b + (255 - b) * i * 4);
-	return ((r << 16 | g << 8 | b));
+	return (r << 16) | (g << 8) | b;
 }
 
 void	colours_change(t_fractol *frac)

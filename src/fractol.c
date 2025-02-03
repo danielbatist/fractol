@@ -23,11 +23,10 @@ int	main(int argc, char **argv)
 			guidelines();
 			argv[1][0] = ft_toupper(argv[1][0]);
 			frac.title = argv[1];
+			frac_init(&frac);fractol_render(&frac);
+			mlx_loop(frac.mlx);
+			return (0);
 		}
-		frac_init(&frac);
-		fractol_render(&frac);
-		mlx_loop(frac.mlx);
-		return (0);
 	}
 	if (argc == 4)
 	{
@@ -36,15 +35,15 @@ int	main(int argc, char **argv)
 			guidelines();
 			argv[1][0] = ft_toupper(argv[1][0]);
 			frac.title = argv[1];
-			if (ft_strncmp(frac.title, "Julia", 5))
+			if (ft_strncmp(frac.title, "Julia", 5) == 0)
 			{
 				frac.julia_r = ft_atod(argv[2]); 
 				frac.julia_i = ft_atod(argv[3]);
+				frac_init(&frac);
+				fractol_render(&frac);
+				mlx_loop(frac.mlx);
+				return (0);
 			}
-			frac_init(&frac);
-			fractol_render(&frac);
-			mlx_loop(frac.mlx);
-			return (0);
 		}
 	}
 	ft_printf("Invalid input\n");

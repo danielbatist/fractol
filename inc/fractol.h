@@ -82,7 +82,6 @@ void		guidelines(void);
 void		frac_init(t_fractol *frac);
 void		zoom_in(t_fractol *frac, double mouse_r, double mouse_i);
 void		zoom_out(t_fractol *frac, double mouse_r, double mouse_i);
-void		my_mlx_pixel_put(int x, int y, t_fractol *frac, int colour);
 double		ft_atod(char *str);
 double		map(t_map coord);
 t_fractol	add_z_with_c(t_fractol z, t_fractol c);

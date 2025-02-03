@@ -46,7 +46,7 @@ static void	init_event(t_fractol *frac)
 static void	init_data(t_fractol *frac)
 {
 	frac->hip = 4;
-	frac->iter = 100;
+	frac->iter = 50;
 	frac->shift_r = 0.0;
 	frac->shift_i = 0.0;
 	frac->zoom = 1.0;

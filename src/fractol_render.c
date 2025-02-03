@@ -2,6 +2,15 @@
 
 #include "fractol.h"
 
+static void	my_mlx_pixel_put(int x, int y, t_fractol *frac, int colour)
+{
+	int	displace;
+
+	displace = (y * frac->line + x * (frac->bpp / 8));
+	*(unsigned int *)(frac->addr + displace) = colour;
+
+}
+
 static void	fract_set(t_fractol *z, t_fractol *c, t_fractol *frac)
 {
 	if (ft_strncmp(frac->title, "Julia", 5) == 0)
@@ -23,10 +32,10 @@ static void	get_pixel_to_complex(int x, int y, t_fractol *frac)
 	int			i;
 	int			rgb;
 
-	z.cpx_r = (map((t_map){x, -2, +2, 0, WID}) * frac->zoom) + frac->shift_r;
-	z.cpx_i = (map((t_map){y, +2, -2, 0, HEI}) * frac->zoom) + frac->shift_i;
-	fract_set(&z, &c, frac);
 	i = 0;
+	z.cpx_r = (map((t_map){x, 0, WID, -2, 2}) * frac->zoom) + frac->shift_r;
+	z.cpx_i = (map((t_map){y, 0, HEI, 2, -2}) * frac->zoom) + frac->shift_i;
+	fract_set(&z, &c, frac);
 	while (i < frac->iter)
 	{
 		z = add_z_with_c(square_complex(z), c);
@@ -46,11 +55,11 @@ void	fractol_render(t_fractol *frac)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (y++ < HEI)
+	y = -1;
+	while (++y < HEI)
 	{
-		x = 0;
-		while (x++ < WID)
+		x = -1;
+		while (++x < WID)
 			get_pixel_to_complex(x, y, frac);
 	}
 	mlx_put_image_to_window(frac->mlx, frac->window, frac->img, 0, 0);
