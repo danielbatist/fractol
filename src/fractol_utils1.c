@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:41:38 by dbatista          #+#    #+#             */
-/*   Updated: 2025/02/04 21:21:10 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/05 00:15:09 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,29 +71,7 @@ double	ft_atod(char *str)
 		return (sign * whole);
 }
 
-double	map(t_map coord)
+double	map(double u_num, double o_min, double o_max)
 {
-	return (coord.new_min + ((coord.u_num - coord.old_min) / \
-	(coord.old_max - coord.old_min)) * (coord.new_max - coord.new_min));
-}
-
-
-void	zoom_in(t_fractol *frac, double mouse_r, double mouse_i)
-{
-	double	z_factor;
-
-	z_factor = 0.92;
-	frac->shift_r += (mouse_r - frac->shift_r) * (1 - z_factor);
-	frac->shift_i += (mouse_i - frac->shift_i) * (1 - z_factor);
-	frac->zoom *= z_factor;
-}
-
-void	zoom_out(t_fractol *frac)
-{
-	double	z_factor;
-	
-	z_factor = 1.15;
-	//frac->shift_r -= mouse_r + (frac->shift_r - mouse_r) * z_factor;
-	//frac->shift_i -= mouse_i + (frac->shift_i - mouse_i) * z_factor;
-	frac->zoom *= z_factor;
+	return (-2 + ((u_num - o_min) / (o_max - o_min)) * 4);
 }

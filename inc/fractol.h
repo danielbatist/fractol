@@ -20,8 +20,8 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define WID 1000
-#define HEI 1000
+#define WID 800
+#define HEI 800
 
 #define BLACK			0x000000
 #define WHITE			0xFFFFFF
@@ -60,6 +60,8 @@ typedef struct s_fractol
 	double	julia_i;
 	double	cpx_r;
 	double	cpx_i;
+	double	map_x;
+	double	map_y;
 }			t_fractol;
 
 typedef struct s_map
@@ -69,6 +71,7 @@ typedef struct s_map
 	double	old_max;
 	double	new_min;
 	double	new_max;
+
 }			t_map;
 
 int			key_handle(int key, t_fractol *frac);
@@ -80,10 +83,8 @@ void		fractol_render(t_fractol *frac);
 void		error_malloc(void);
 void		guidelines(void);
 void		frac_init(t_fractol *frac);
-void		zoom_in(t_fractol *frac, double mouse_r, double mouse_i);
-void		zoom_out(t_fractol *frac);
 double		ft_atod(char *str);
-double		map(t_map coord);
+double		map(double u_num, double old_min, double old_max);
 t_fractol	add_z_with_c(t_fractol z, t_fractol c);
 t_fractol	square_complex(t_fractol z);
 
