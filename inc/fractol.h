@@ -81,7 +81,7 @@ void		error_malloc(void);
 void		guidelines(void);
 void		frac_init(t_fractol *frac);
 void		zoom_in(t_fractol *frac, double mouse_r, double mouse_i);
-void		zoom_out(t_fractol *frac, double mouse_r, double mouse_i);
+void		zoom_out(t_fractol *frac);
 double		ft_atod(char *str);
 double		map(t_map coord);
 t_fractol	add_z_with_c(t_fractol z, t_fractol c);

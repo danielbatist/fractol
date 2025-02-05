@@ -6,7 +6,7 @@
 /*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:41:58 by dbatista          #+#    #+#             */
-/*   Updated: 2025/01/29 20:35:34 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/04 21:26:31 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,23 @@ int	key_handle(int key, t_fractol *frac)
 		frac->iter -= 30;
 	else if (key == XK_space)
 		colours_change(frac);
+	fractol_render(frac);
 	return (0);
 }
 
-int	mouse_handle(int but, int x, int y, t_fractol *frac)
+int	mouse_handle(int but, int x, int y	, t_fractol *frac)
 {
 	double	mouse_r;
 	double	mouse_i;
 
 	mouse_r = (x - WID / 2) / (0.5 * WID * frac->zoom) + frac->shift_r;
-	mouse_i = (y - HEI / 2) / (0.5 * HEI * frac->zoom) + frac->shift_i;
+	mouse_i = (HEI / 2 - y) / (0.5 * HEI * frac->zoom) + frac->shift_i;
 	if (ft_strncmp(frac->title, "Julia", 5) == 0)
 		julia_mouse_move(but, x, y, frac);
 	if (but == Button4)
 		zoom_in(frac, mouse_r, mouse_i);
 	else if (but == Button5)
-		zoom_out(frac, mouse_r, mouse_i);
+		zoom_out(frac);
 	fractol_render(frac);
 	return (0);
 }
