@@ -25,7 +25,7 @@ static void	fract_set(t_fractol *z, t_fractol *c, t_fractol *frac)
 	}
 }
 
-static void	get_pixel_to_complex(int x, int y, t_fractol *frac)
+void	get_pixel_to_complex(int x, int y, t_fractol *frac)
 {
 	t_fractol	z;
 	t_fractol	c;
@@ -33,8 +33,9 @@ static void	get_pixel_to_complex(int x, int y, t_fractol *frac)
 	int			rgb;
 
 	i = 0;
-	z.cpx_r = (map(x, 0, WID) * frac->zoom) + frac->shift_r;
-	z.cpx_i = (map(y, 0, HEI) * frac->zoom) + frac->shift_i;
+	z.cpx_r = (map((t_map){x, 0, WID, -2, 2}) * frac->zoom) + frac->shift_r;
+	// (-2 + ((X - 0) / WID) * 4) * ZOOM + shift_r;
+	z.cpx_i = (map((t_map){y, 0, WID, 2, -2}) * frac->zoom) + frac->shift_i;
 	fract_set(&z, &c, frac);
 	while (i < frac->iter)
 	{

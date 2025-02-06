@@ -83,8 +83,12 @@ void		fractol_render(t_fractol *frac);
 void		error_malloc(void);
 void		guidelines(void);
 void		frac_init(t_fractol *frac);
+void		zoom_in(t_fractol *frac, double mouse_r, double mouse_i);
+void		zoom_out(t_fractol *frac, double mouse_r, double mouse_i);
 double		ft_atod(char *str);
-double		map(double u_num, double old_min, double old_max);
+double		map(t_map coords);
+void	get_pixel_to_complex(int x, int y, t_fractol *frac);
+
 t_fractol	add_z_with_c(t_fractol z, t_fractol c);
 t_fractol	square_complex(t_fractol z);
 
