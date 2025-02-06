@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:41:38 by dbatista          #+#    #+#             */
-/*   Updated: 2025/02/05 21:14:15 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:40:16 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,18 @@ void	zoom_in(t_fractol *frac, double mouse_r, double mouse_i)
 {
 	double	z_factor;
 
-	(void)mouse_i;
-	(void)mouse_r;
 	z_factor = 0.90;
-
-	frac->shift_r = (frac->shift_r - mouse_r) * z_factor + mouse_r;
-	frac->shift_i = (frac->shift_i - mouse_i) * z_factor + mouse_i;
+	frac->shift_r = mouse_r + (frac->shift_r - mouse_r) * z_factor;
+	frac->shift_i = mouse_i + (frac->shift_i - mouse_i) * z_factor;
 	frac->zoom *= z_factor;
-	printf("%f, %f - zoom in pos mouse r e i: \n", frac->shift_r, frac->shift_i);
-	printf("%f\n", frac->zoom);
 }
 
 void	zoom_out(t_fractol *frac, double mouse_r, double mouse_i)
 {
 	double	z_factor;
 
-	(void)mouse_i;
-	(void)mouse_r;
 	z_factor = 1.12;
-
-	frac->shift_r = (frac->shift_r - mouse_r) * z_factor + mouse_r;
-	frac->shift_i = (frac->shift_i - mouse_i) * z_factor + mouse_i;
+	frac->shift_r = mouse_r + (frac->shift_r - mouse_r) * z_factor;
+	frac->shift_i = mouse_i + (frac->shift_i - mouse_i) * z_factor;
 	frac->zoom *= z_factor;
-	printf("%f, %f - zoom in pos mouse r e i: \n", frac->shift_r, frac->shift_i);
-	printf("%f\n", frac->zoom);
 }

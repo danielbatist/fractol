@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:41:58 by dbatista          #+#    #+#             */
-/*   Updated: 2025/02/05 21:19:32 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:41:01 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,34 +58,15 @@ int	mouse_handle(int but, int x, int y	, t_fractol *frac)
 {
 	double		mouse_r;
 	double		mouse_i;
-	double		old_cpx_x;
-	double 		old_cpx_y;
-	double		new_cpx_x;
-	double 		new_cpx_y;
 
-	printf("%i, %i - coordenada do pixel:\n", x, y);
-
-	old_cpx_x = -2.0 + ((((double)x) / WID) * 4.0) * frac->zoom + frac->shift_r;
-	old_cpx_y = 2.0 + ((((double)y) / HEI) * 4.0) * frac->zoom + frac->shift_i;
-	printf("%f, %f coordenadas do cpx antes: \n", old_cpx_x, old_cpx_y);
-
-
-	mouse_r = (x - WID / 2) / (0.5 * WID * frac->zoom) + frac->shift_r;
-	mouse_i = (HEI / 2 - y) / (0.5 * HEI * frac->zoom) + frac->shift_i;
-	printf("%f, %f - teste de mouse r e i: \n", mouse_r, mouse_i);
-
+	mouse_r = frac->shift_r + ((double)x / WID) * (4.0 * frac->zoom) - 2.0 * frac->zoom;
+	mouse_i = frac->shift_i + (2.0 * frac->zoom) - ((double)y / HEI) * (4.0 * frac->zoom);
 	if (ft_strncmp(frac->title, "Julia", 5) == 0)
 		julia_mouse_move(but, x, y, frac);
 	else if (but == Button4)
 		zoom_in(frac, mouse_r, mouse_i);
 	else if (but == Button5)
 		zoom_out(frac, mouse_r, mouse_i);
-	new_cpx_x = -2.0 + ((((double)x) / WID) * 4.0) * frac->zoom + frac->shift_r;
-	new_cpx_y = 2.0 + ((((double)y) / HEI) * 4.0) * frac->zoom + frac->shift_i;
-	
-	//frac->shift_r += (new_cpx_x - old_cpx_x);
-	//frac->shift_i -= (new_cpx_y - old_cpx_y);
-	printf("%f, %f  coordenadas do cpx depois:\n", new_cpx_x, new_cpx_y);
 	fractol_render(frac);
 	return (0);
 }
