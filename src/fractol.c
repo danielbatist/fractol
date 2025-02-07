@@ -6,7 +6,7 @@
 /*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:52:05 by dbatista          #+#    #+#             */
-/*   Updated: 2025/01/28 23:52:22 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:35:50 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	main(int argc, char **argv)
 			guidelines();
 			argv[1][0] = ft_toupper(argv[1][0]);
 			frac.title = argv[1];
-			frac_init(&frac);fractol_render(&frac);
+			frac_init(&frac);
+			fractol_render(&frac);
+			mlx_loop_hook(frac.mlx, re_fractol, &frac);
 			mlx_loop(frac.mlx);
 			return (0);
 		}
@@ -41,6 +43,7 @@ int	main(int argc, char **argv)
 				frac.julia_i = ft_atod(argv[3]);
 				frac_init(&frac);
 				fractol_render(&frac);
+				mlx_loop_hook(frac.mlx, re_fractol, &frac);
 				mlx_loop(frac.mlx);
 				return (0);
 			}

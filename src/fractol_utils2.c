@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:41:58 by dbatista          #+#    #+#             */
-/*   Updated: 2025/02/05 23:41:01 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/06 21:09:10 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,15 @@ int	mouse_handle(int but, int x, int y	, t_fractol *frac)
 	if (ft_strncmp(frac->title, "Julia", 5) == 0)
 		julia_mouse_move(but, x, y, frac);
 	else if (but == Button4)
+	{
 		zoom_in(frac, mouse_r, mouse_i);
+		frac->re_render = 1;
+	}
 	else if (but == Button5)
+	{
 		zoom_out(frac, mouse_r, mouse_i);
+		frac->re_render = 1;
+	}
 	fractol_render(frac);
 	return (0);
 }

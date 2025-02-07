@@ -46,7 +46,8 @@ typedef struct s_fractol
 	int		line;
 	int		endian;
 	int		colour;
-	int		iter;	
+	int		iter;
+	int		re_render;
 	char	*title;
 	char	*addr;
 	void	*mlx;
@@ -78,6 +79,7 @@ int			key_handle(int key, t_fractol *frac);
 int			mouse_handle(int but, int x, int y, t_fractol *frac);
 int			exit_clear(t_fractol *frac);
 int			blend_colours(int c1, int c2, double i);
+int			re_fractol(t_fractol *frac);
 void		colours_change(t_fractol *frac);
 void		fractol_render(t_fractol *frac);
 void		error_malloc(void);

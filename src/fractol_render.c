@@ -2,6 +2,16 @@
 
 #include "fractol.h"
 
+int	re_fractol(t_fractol *frac)
+{
+	if (frac->re_render)
+	{
+		fractol_render(frac);
+		frac->re_render = 0;
+	}
+	return (0);
+}
+
 static void	my_mlx_pixel_put(int x, int y, t_fractol *frac, int colour)
 {
 	int	displace;
@@ -34,7 +44,6 @@ void	get_pixel_to_complex(int x, int y, t_fractol *frac)
 
 	i = 0;
 	z.cpx_r = (map((t_map){x, 0, WID, -2, 2}) * frac->zoom) + frac->shift_r;
-	// (-2 + ((X - 0) / WID) * 4) * ZOOM + shift_r;
 	z.cpx_i = (map((t_map){y, 0, WID, 2, -2}) * frac->zoom) + frac->shift_i;
 	fract_set(&z, &c, frac);
 	while (i < frac->iter)
