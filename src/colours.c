@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colours.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:14:21 by dbatista          #+#    #+#             */
-/*   Updated: 2025/01/29 15:42:44 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/08 21:34:26 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	blend_colours(int c1, int c2, double i)
 	r = (int)(r + (255 - r) * i * 1.5);
 	g = (int)(g + (255 - g) * i * 0.2);
 	b = (int)(b + (255 - b) * i * 4);
-	return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	colours_change(t_fractol *frac)

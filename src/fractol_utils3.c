@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:43:03 by dbatista          #+#    #+#             */
-/*   Updated: 2025/02/06 21:07:29 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:33:40 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 t_fractol	square_complex(t_fractol z)
 {

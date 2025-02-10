@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:54:04 by dbatista          #+#    #+#             */
-/*   Updated: 2025/02/06 20:20:36 by dbatista         ###   ########.fr       */
+/*   Updated: 2025/02/09 22:28:34 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	creation_img(t_fractol *ft)
 
 static void	init_event(t_fractol *frac)
 {
-	mlx_hook(frac->window, KeyPress, KeyPressMask, key_handle, frac);
-	mlx_hook(frac->window, ButtonPress, ButtonPressMask, mouse_handle, frac);
-	mlx_hook(frac->window, DestroyNotify, StructureNotifyMask, exit_clear, frac);
+	mlx_hook(frac->window, KEY_PRESS, (1L << 0), key_handle, frac);
+	mlx_hook(frac->window, BUTTON_PRESS, (1L << 2), mouse_handle, frac);
+	mlx_hook(frac->window, DESTROY_NOTIFY, (1L << 17), exit_clear, frac);
 }
 
 static void	init_data(t_fractol *frac)

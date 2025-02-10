@@ -1,16 +1,16 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol_render.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 21:35:49 by dbatista          #+#    #+#             */
+/*   Updated: 2025/02/08 21:36:53 by dbatista         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fractol.h"
-
-int	re_fractol(t_fractol *frac)
-{
-	if (frac->re_render)
-	{
-		fractol_render(frac);
-		frac->re_render = 0;
-	}
-	return (0);
-}
 
 static void	my_mlx_pixel_put(int x, int y, t_fractol *frac, int colour)
 {
@@ -18,7 +18,6 @@ static void	my_mlx_pixel_put(int x, int y, t_fractol *frac, int colour)
 
 	displace = (y * frac->line + x * (frac->bpp / 8));
 	*(unsigned int *)(frac->addr + displace) = colour;
-
 }
 
 static void	fract_set(t_fractol *z, t_fractol *c, t_fractol *frac)
@@ -31,7 +30,7 @@ static void	fract_set(t_fractol *z, t_fractol *c, t_fractol *frac)
 	else
 	{
 		c->cpx_r = z->cpx_r;
-		c->cpx_i = z->cpx_i;	
+		c->cpx_i = z->cpx_i;
 	}
 }
 
